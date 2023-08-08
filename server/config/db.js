@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const DB = process.env.DATABASE;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/stratcrud");
+    await mongoose.connect(DB);
     console.log("DB connected successfully");
   } catch (error) {
     console.log(error);
