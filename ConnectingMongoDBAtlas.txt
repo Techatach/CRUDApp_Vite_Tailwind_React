@@ -1,7 +1,10 @@
-
+//MongoDB Atlas
 Project: publicAd
 Uername: yoon
 Password: yoon$2566
 Database name: ppad
 Collection name: ppusers เมื่อมีการทดสอบฐานข้อมูลด้วย postman จะปรากฎ collection: products
 mongodb+srv://yoon:yoon$2566@cluster0.615rile.mongodb.net/ppad?retryWrites=true&w=majority
+
+//postman
+crudThai POST crud1
