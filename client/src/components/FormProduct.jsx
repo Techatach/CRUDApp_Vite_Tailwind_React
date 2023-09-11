@@ -7,13 +7,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const FormProduct = () => {
   const [data, setData] = useState([]);
   const [form, setForm] = useState({});
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    await axios
+    return await axios
       .get("http://localhost:3000/api/product")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
@@ -28,7 +29,7 @@ const FormProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios
+    return await axios
       .post("http://localhost:3000/api/product", form)
       .then((res) => {
         console.log(res.data);
@@ -36,10 +37,10 @@ const FormProduct = () => {
       })
       .catch((err) => console.log(err));
   };
-  
+
   const handleRemove = async (id) => {
     console.log(id);
-    await axios
+    return await axios
       .delete("http://localhost:3000/api/product/" + id)
       .then((res) => {
         console.log(res);
@@ -311,6 +312,33 @@ const FormProduct = () => {
         </div>
       </form>
 
+      <div
+        style={{
+          margin: "auto",
+          padding: "15px",
+          maxWidth: "400px",
+          alignContent: "center",
+        }}
+        className="d-flex input-group w-auto"
+      >
+        <input
+          type="text"
+          name="name"
+          className="form-control mr-4"
+          placeholder="Search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+
+        <button
+          type="submit"
+          color="dark"
+          className="btn btn-success text-dark rounded-3"
+        >
+          Search
+        </button>
+      </div>
+
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg pt-4">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -406,93 +434,99 @@ const FormProduct = () => {
           </thead>
           <tbody>
             {data
-              ? data.map((item, index) => (
-                  <tr
-                    key={index}
-                    className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
-                  >
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      <button className="btn btn-primary mx-3">
-                        <Link to={"/edit/" + item._id}>
-                          <EditIcon />
+              ? data
+                  .filter(
+                    (data) =>
+                      data.strategy.toLowerCase().includes(query) ||
+                      data.implementation.toLowerCase().includes(query)
+                  )
+                  .map((item, index) => (
+                    <tr
+                      key={index}
+                      className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+                    >
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <button className="btn btn-primary mx-3">
+                          <Link to={"/edit/" + item._id}>
+                            <EditIcon />
+                          </Link>
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => {
+                            window.confirm(
+                              "คุณแน่ใจใช่ไหมว่าจะลบข้อมูลนี้ออกจากระบบ (Are you sure you want to delete your data?)"
+                            ) && handleRemove(item._id);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </button>
+                      </td>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                      >
+                        {index + 1}
+                      </th>
+                      <th
+                        scope="row"
+                        className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                      >
+                        {item.strategy}
+                      </th>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.implementation}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.email}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.mobile}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.budget}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.year}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.evaluation}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.strength}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.weak}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.development}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.improvement}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.suggestion}
+                      </td>
+                      <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <Link
+                          to={"/edit/" + item._id}
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-4"
+                        >
+                          Edit
                         </Link>
-                      </button>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => {
-                          window.confirm(
-                            "คุณแน่ใจใช่ไหมว่าจะลบข้อมูลนี้ออกจากระบบ (Are you sure you want to delete your data?)"
-                          ) && handleRemove(item._id);
-                        }}
-                      >
-                        <DeleteIcon />
-                      </button>
-                    </td>
-                    <th
-                      scope="row"
-                      className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {index + 1}
-                    </th>
-                    <th
-                      scope="row"
-                      className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {item.strategy}
-                    </th>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.implementation}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.email}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.mobile}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.budget}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.year}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.evaluation}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.strength}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.weak}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.development}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.improvement}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      {item.suggestion}
-                    </td>
-                    <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                      <Link
-                        to={"/edit/" + item._id}
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-4"
-                      >
-                        Edit
-                      </Link>
-                      <button
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        onClick={() => {
-                          window.confirm(
-                            "คุณแน่ใจใช่ไหมว่าจะลบข้อมูลนี้ออกจากระบบ (Are you sure you want to delete your data?)"
-                          ) && handleRemove(item._id);
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
+                        <button
+                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                          onClick={() => {
+                            window.confirm(
+                              "คุณแน่ใจใช่ไหมว่าจะลบข้อมูลนี้ออกจากระบบ (Are you sure you want to delete your data?)"
+                            ) && handleRemove(item._id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
               : null}
           </tbody>
         </table>

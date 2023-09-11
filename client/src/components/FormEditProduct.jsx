@@ -42,7 +42,7 @@ const FormEditProduct = () => {
       .put("http://localhost:3000/api/product/" + params.id, data)
       .then((res) => {
         console.log(res.data);
-        navigate("/eval");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
