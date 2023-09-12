@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SearchIcon from '@mui/icons-material/Search';
 
 const FormProduct = () => {
   const [data, setData] = useState([]);
@@ -316,7 +317,7 @@ const FormProduct = () => {
         style={{
           margin: "auto",
           padding: "15px",
-          maxWidth: "400px",
+          maxWidth: "600px",
           alignContent: "center",
         }}
         className="d-flex input-group w-auto"
@@ -333,9 +334,9 @@ const FormProduct = () => {
         <button
           type="submit"
           color="dark"
-          className="btn btn-success text-dark rounded-3"
+          className="btn btn-success rounded-3 bg-success text-white"
         >
-          Search
+          <SearchIcon/>
         </button>
       </div>
 
