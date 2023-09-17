@@ -5,3 +5,7 @@
   font-size: 18px;
   font-weight: normal;
 }
+
+footer button {
+  padding: 1rem;
+}

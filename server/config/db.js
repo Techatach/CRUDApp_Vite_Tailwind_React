@@ -3,7 +3,10 @@ const DB = process.env.DATABASE;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(DB);
+    await mongoose.connect(DB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("DB connected successfully");
   } catch (error) {
     console.log(error);

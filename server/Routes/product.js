@@ -28,4 +28,6 @@ router.put("/product/:id", update);
 //Delete ลบข้อมูล
 router.delete("/product/:id", remove);
 
+// router.get("/paginatedUsers", list);
+
 module.exports = router;

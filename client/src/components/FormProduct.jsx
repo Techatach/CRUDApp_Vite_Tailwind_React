@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
+import ReactPaginate from "react-paginate";
 
 const FormProduct = () => {
   const [data, setData] = useState([]);
   const [form, setForm] = useState({});
   const [query, setQuery] = useState("");
+  const [limit, setLimit] = useState([]);
+  const currentPage = useRef();
+  const usersPerPage = 10;
+  const pageCount = Math.ceil(data.length / usersPerPage);
 
   useEffect(() => {
+    currentPage.current = 1;
     loadData();
+    getPaginatedUsers();
   }, []);
 
   const loadData = async () => {
     return await axios
       .get("http://localhost:3000/api/product")
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -49,6 +58,26 @@ const FormProduct = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  function handlePageClick(e) {
+    console.log(e);
+    currentPage.current = e.selected + 1;
+    getPaginatedUsers();
+  }
+
+  function getPaginatedUsers() {
+    fetch(
+      `http://localhost:3000/api/product?page=${currentPage.current}&limit=${limit}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "userData");
+        setData(data);
+      });
+  }
 
   return (
     <div>
@@ -312,7 +341,6 @@ const FormProduct = () => {
           </button>
         </div>
       </form>
-
       <div
         style={{
           margin: "auto",
@@ -336,10 +364,9 @@ const FormProduct = () => {
           color="dark"
           className="btn btn-success rounded-3 bg-success text-white"
         >
-          <SearchIcon/>
+          <SearchIcon />
         </button>
       </div>
-
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg pt-4">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -531,6 +558,30 @@ const FormProduct = () => {
               : null}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-10">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="Next >"
+          onPageChange={handlePageClick}
+          pageCount={pageCount}
+          previousLabel="< Previous"
+          renderOnZeroPageCount={null}
+          marginPagesDisplayed={3}
+          pageRangeDisplayed={6}
+          containerClassName="pagination justify-content-center"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          activeClassName="active"
+          forcePage={currentPage.current - 1}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+        />
       </div>
     </div>
   );

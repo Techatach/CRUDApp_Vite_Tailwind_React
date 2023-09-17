@@ -20,6 +20,7 @@ exports.list = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
 exports.create = async (req, res) => {
   try {
     console.log(req.body);
@@ -30,6 +31,7 @@ exports.create = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
 exports.update = async (req, res) => {
   try {
     const id = req.params.id;
@@ -42,6 +44,7 @@ exports.update = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
 exports.remove = async (req, res) => {
   try {
     const id = req.params.id;
@@ -52,3 +55,13 @@ exports.remove = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+// exports.list = async (req, res) => {
+//   try {
+//     const allUser = await products.find({}).exec();
+//     res.json(allUser);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send("Server error");
+//   }
+// };
