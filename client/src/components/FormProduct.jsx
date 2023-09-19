@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
-import ReactPaginate from "react-paginate";
+import { TablePagination } from "@mui/material";
 
 const FormProduct = () => {
   const [data, setData] = useState([]);
@@ -12,10 +12,21 @@ const FormProduct = () => {
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState([]);
   const currentPage = useRef();
-  const usersPerPage = 10;
-  const pageCount = Math.ceil(data.length / usersPerPage);
+  const [rows, setRowsChange] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
+    fetch("http://localhost:3000/api/product")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        setRowsChange(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
     currentPage.current = 1;
     loadData();
     getPaginatedUsers();
@@ -59,12 +70,6 @@ const FormProduct = () => {
       .catch((err) => console.log(err));
   };
 
-  function handlePageClick(e) {
-    console.log(e);
-    currentPage.current = e.selected + 1;
-    getPaginatedUsers();
-  }
-
   function getPaginatedUsers() {
     fetch(
       `http://localhost:3000/api/product?page=${currentPage.current}&limit=${limit}`,
@@ -78,6 +83,15 @@ const FormProduct = () => {
         setData(data);
       });
   }
+
+  const handleChangePage = (e, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleRowsPerPage = (e) => {
+    setRowsPerPage(parseInt(e.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <div>
@@ -468,6 +482,7 @@ const FormProduct = () => {
                       data.strategy.toLowerCase().includes(query) ||
                       data.implementation.toLowerCase().includes(query)
                   )
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item, index) => (
                     <tr
                       key={index}
@@ -529,6 +544,7 @@ const FormProduct = () => {
                       <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                         {item.development}
                       </td>
+
                       <td className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                         {item.improvement}
                       </td>
@@ -560,28 +576,16 @@ const FormProduct = () => {
         </table>
       </div>
 
-      <div className="mt-10">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="Next >"
-          onPageChange={handlePageClick}
-          pageCount={pageCount}
-          previousLabel="< Previous"
-          renderOnZeroPageCount={null}
-          marginPagesDisplayed={3}
-          pageRangeDisplayed={6}
-          containerClassName="pagination justify-content-center"
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          activeClassName="active"
-          forcePage={currentPage.current - 1}
-          breakClassName={"page-item"}
-          breakLinkClassName={"page-link"}
-        />
+      <div className="d-flex justify-center mt-2">
+        <TablePagination
+          rowsPerPageOptions={[5, 20, 30, 50, { label: "All", value: 100 }]}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          count={rows.length}
+          component="div"
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleRowsPerPage}
+        ></TablePagination>
       </div>
     </div>
   );
