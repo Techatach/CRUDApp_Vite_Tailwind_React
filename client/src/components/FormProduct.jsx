@@ -91,6 +91,7 @@ const FormProduct = () => {
   const handleRowsPerPage = (e) => {
     setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
+    return products.length;
   };
 
   return (

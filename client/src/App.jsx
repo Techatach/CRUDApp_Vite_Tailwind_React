@@ -9,8 +9,6 @@ import Footer from "./components/Footer";
 import Team from "./components/Team";
 import FormEditProduct from "./components/FormEditProduct";
 import FormProduct from "./components/formproduct";
-import { Pagination } from "@mui/material";
-import Page from "./components/Page";
 
 function App() {
   return (
@@ -22,7 +20,6 @@ function App() {
         <Route path="/eval" element={<Home />} />
         <Route path="edit/:id" element={<FormEditProduct />} />
       </Routes>
-      {/* <Page /> */}
       <Footer />
     </div>
   );
