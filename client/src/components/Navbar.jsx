@@ -32,6 +32,7 @@ const Navbar = () => {
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
                 <a href="/edit">ยุทธศาสตร์ชาติ</a>
               </li>
+
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
                 <a href="#">ติดต่อ</a>
               </li>

@@ -18,6 +18,9 @@ const FormProduct = () => {
 
   useEffect(() => {
     fetch("http://localhost:3000/api/product")
+      // fetch(
+      //   `http://localhost:3000/api/product?page=${currentPage.current}&limit=${limit}`
+      // )
       .then((res) => {
         return res.json();
       })

@@ -1,4 +1,7 @@
 import React from "react";
+import GoogleIcon from "@mui/icons-material/Google";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const Footer = () => {
   return (
@@ -24,22 +27,26 @@ const Footer = () => {
             <div class="text-center text-lg md:space-x-1">
               {" "}
               <a
-                class="w-9 h-10 pt-1 m-2 md:ml-2 md:mr-0 inline-block border-1 rounded-lg text-white bg-blue-500 hover:bg-white hover:text-blue-500"
+                class="w-9 h-10 pt-1 m-2 md:ml-2 md:mr-0 inline-block border-1 rounded-lg text-warning bg-blue-600 hover:bg-white hover:text-blue-600"
                 href="#"
               >
-                <li class="fa fa-twitter"></li>
+                {/* <li class="fa fa-twitter"></li> */}
+                <TwitterIcon />
               </a>{" "}
               <a
-                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-white bg-orange-500 hover:bg-white hover:text-orange-500"
-                href="#"
+                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-danger bg-green-600 hover:bg-white  hover:text-blue-600"
+                href="https://www.google.com/"
               >
-                <li class="fa fa-google"></li>
+                {/* <li class="fa fa-google"></li> */}
+
+                <GoogleIcon />
               </a>{" "}
               <a
-                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-white bg-red-500 hover:bg-white hover:text-red-500"
+                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-white bg-green-500 hover:bg-white hover:text-green-500"
                 href="#"
               >
-                <li class="fa fa-linkedin"></li>
+                {/* <li class="fa fa-linkedin"></li> */}
+                <LinkedInIcon />
               </a>{" "}
               <a
                 class="w-9 h-10 pt-[5px] m-2 inline-block border-1 rounded-lg text-white bg-purple-500 hover:bg-white hover:text-purple-500"
