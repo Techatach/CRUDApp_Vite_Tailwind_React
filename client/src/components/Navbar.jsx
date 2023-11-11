@@ -30,14 +30,14 @@ const Navbar = () => {
                 <Link to="/eval">ทีมงาน</Link>
               </li>
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
-                <a href="/edit">ยุทธศาสตร์ชาติ</a>
+                <a href="/post">ยุทธศาสตร์ชาติ</a>
               </li>
 
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
-                <a href="#">ติดต่อ</a>
+                <a href="/contact">ติดต่อ</a>
               </li>
               <li class="text-white hover:text-white hover:bg-blue-600 mx-4 my-1 border-2 border-blue-600 px-2 rounded-2xl ">
-                <a href="#">LogIn</a>
+                <a href="/signin">SignIn</a>
               </li>
               <li class="text-white bg-blue-600 px-2 rounded-2xl mx-4 my-1 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600">
                 <a href="#">SignUp</a>

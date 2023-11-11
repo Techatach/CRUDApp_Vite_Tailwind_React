@@ -23,35 +23,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to Thailand");
 });
 
-// app.get("/paginatedUsers", async (req, res) => {
-//   const allUser = await products.find({});
-//   const page = parseInt(req.query.page);
-//   const limit = parseInt(req.query.limit);
-
-//   const startIdex = (page - 1) * limit;
-//   const lasttIdex = page * limit;
-
-//   const results = {};
-//   results.totalUser = allUser.length;
-//   results.pageCount = Math.ceil(allUser.length / limit);
-
-//   if (lasttIdex < allUser.length) {
-//     results.next = {
-//       page: page + 1,
-//     };
-//   }
-
-//   if (startIndex > 0) {
-//     results.prev = {
-//       page: page - 1,
-//     };
-//   }
-
-//   results.result = allUser.slice(startIdex, lasttIdex);
-
-//   res.json(results);
-// });
-
 //Route การเรียกข้อมูลแบบอัตโนมัติจาก Routers
 readdirSync("./Routes").map((r) => app.use("/api", require("./Routes/" + r)));
 

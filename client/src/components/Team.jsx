@@ -21,7 +21,7 @@ const Team = () => {
                   unlikely places.
                 </div>
                 <div class="text-gray-500 m-2 text-sm">
-                  <a href="">
+                  <a href="/ecom">
                     Flowers are a beautiful way to show your appreciation for
                     someone. They are also a great way to show your love.
                     Flowers can be delivered in a variety of ways, including
