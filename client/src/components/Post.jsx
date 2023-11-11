@@ -11,7 +11,8 @@ const Post = () => {
                 <div class=" w-full overflow-hidden">
                   {" "}
                   <img
-                    src="https://source.unsplash.com/700x350/?city"
+                    // src="https://source.unsplash.com/700x350/?city"
+                    src="images/national.jpg"
                     alt=""
                     class=""
                   />{" "}
@@ -52,12 +53,86 @@ const Post = () => {
                       </div>
                     </div>
                   </div>
+                  <section>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Porro laborum praesentium et veritatis blanditiis ipsa
+                      repudiandae, deleniti nisi labore aliquam obcaecati fugiat
+                      natus totam dolor. Hic excepturi voluptatibus soluta
+                      animi. Lorem ipsum dolor sit amet consectetur adipisicing
+                      elit. Cum delectus maiores optio quidem consequuntur
+                      ducimus, est modi ab in accusantium quas quisquam cumque
+                      aliquam! Perspiciatis mollitia explicabo fugiat hic neque!
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Mollitia nisi sit quia? Esse ab dolor dolorem in
+                      necessitatibus fuga quas ratione sunt nulla praesentium
+                      quia, fugit exercitationem. Quae, iure eius.
+                    </p>
+                  </section>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="text-sm text-gray-500 mt-2 mx-9 flex flex-col md:flex-row max-w-5xl justify-center items-center ml-80">
+        <p>
+          เมื่อเราต้องการความมั่นคงในชีวิต Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Corrupti delectus reprehenderit
+          laboriosam tenetur voluptates, ullam vero, autem, aliquid quae odio
+          commodi tempora fuga exercitationem eius ea debitis dolores nostrum
+          maiores? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Sequi neque alias, soluta odit ipsum rerum aspernatur libero, quam
+          iusto sit nihil minima ea totam harum perferendis praesentium
+          molestiae cumque quas! Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Non provident laborum at neque consequuntur eum
+          architecto itaque magni! Eaque officia eum ipsum animi quos, officiis
+          dignissimos expedita voluptate modi assumenda?
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum
+            adipisci sit animi voluptatum aliquid, expedita quos eveniet,
+            perspiciatis veniam, esse commodi neque nulla? Quisquam officiis
+            unde illum praesentium quos?
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum
+            adipisci sit animi voluptatum aliquid, expedita quos eveniet,
+            perspiciatis veniam, esse commodi neque nulla? Quisquam officiis
+            unde illum praesentium quos?
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum
+            adipisci sit animi voluptatum aliquid, expedita quos eveniet,
+            perspiciatis veniam, esse commodi neque nulla? Quisquam officiis
+            unde illum praesentium quos?
+          </li>
+          <p className="mt-4">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
+            quos, incidunt dolore voluptas voluptatem, numquam inventore,
+            placeat nam quae tempora corporis. Commodi, laborum! Aspernatur
+            asperiores suscipit laudantium architecto voluptates. Voluptates.
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Voluptate facilis placeat debitis dicta itaque. Illum quasi error
+              officiis fuga id alias facere dolor accusantium, ipsam, porro
+              ullam praesentium provident minus.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Voluptate facilis placeat debitis dicta itaque. Illum quasi error
+              officiis fuga id alias facere dolor accusantium, ipsam, porro
+              ullam praesentium provident minus.
+            </li>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Voluptate facilis placeat debitis dicta itaque. Illum quasi error
+              officiis fuga id alias facere dolor accusantium, ipsam, porro
+              ullam praesentium provident minus.
+            </li>
+          </p>
+        </p>
+      </div>
+
       <script src="https://cdn.tailwindcss.com"></script>
       <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
       <script

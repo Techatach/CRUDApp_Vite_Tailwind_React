@@ -21,6 +21,9 @@ const Navbar = () => {
                 </a>
               </li>
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
+                <a href="/post">ยุทธศาสตร์ชาติ</a>
+              </li>
+              <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
                 <a href="/">การประเมินนโยบายสาธารณะ</a>
               </li>
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
@@ -29,10 +32,6 @@ const Navbar = () => {
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
                 <Link to="/eval">ทีมงาน</Link>
               </li>
-              <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
-                <a href="/post">ยุทธศาสตร์ชาติ</a>
-              </li>
-
               <li class="text-white hover:text-blue-600 hover:font-bold font-medium mx-4 my-1">
                 <a href="/contact">ติดต่อ</a>
               </li>
